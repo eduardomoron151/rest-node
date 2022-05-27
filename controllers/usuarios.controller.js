@@ -61,6 +61,7 @@ const usuariosDelete = async(req, res = response) => {
 
     // borrado por estado, recomendado
     const usuario = await Usuario.findByIdAndUpdate(id, { estado : false});
+
     res.json({
         usuario
     });
