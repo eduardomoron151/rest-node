@@ -4,9 +4,58 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acceso denegado</title>
+
+    <title>Google Signin</title>
+
+
 </head>
 <body>
-    <h1>Acceso Denegado</h1>
+    <h1>Google Signin</h1>
+    <hr>
+
+<div id="g_id_onload"
+    data-client_id="188066351178-oag1d5am7k316kdkn6l9ij4ucgq0ci3p.apps.googleusercontent.com"
+    data-context="use"
+    data-ux_mode="popup"
+    data-callback="googleAuth"
+    data-nonce=""
+    data-auto_prompt="false">
+</div>
+
+<div class="g_id_signin"
+    data-type="standard"
+    data-shape="rectangular"
+    data-theme="outline"
+    data-text="$ {button.text}"
+    data-size="large"
+    data-logo_alignment="left">
+</div>
+
+    <script src="https://accounts.google.com/gsi/client" onload="console.log('TODO: add onload function')">  
+    </script>
+
+    <script>
+
+        var url = ( window.location.hostname.includes('localhost'))
+                ? 'http://localhost:8080/api/auth/google'
+                : 'https://restserver-node-eduardo.herokuapp.com/api/auth/google';
+        
+        function googleAuth(data) {
+            const id_token = data.credential;
+            let datos = { id_token }
+
+            fetch(url, {
+                method: 'POST',
+                headers: { 'Content-Type' : 'application/json'},
+                body: JSON.stringify(datos)
+            })
+            .then(resp => resp.json())
+            .then(data => console.log('Server', data))
+            .catch(console.log)
+        }
+
+    </script>
+
+
 </body>
 </html>
