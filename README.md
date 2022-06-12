@@ -1,3 +1,9 @@
-# Rest server esqueleto
+# Rest server 
 
-Estructura basica para servicio rest en express
+> ### Aplicacion Rest Server
+> - Node js
+> - Socket.io
+> - MongoDB
+> - Autenticacion JWT
+> - Carga de Imagenes al servidor
+> - Crud de Usuarios, Productos, Categorias
